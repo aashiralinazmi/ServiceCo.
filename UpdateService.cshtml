@@ -1,0 +1,157 @@
+﻿
+@model ServiceCo.Models.ServiceModel
+
+@{
+    ViewBag.Title = "Update Service";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+
+@helper Button(string type, string value)
+{
+    <input type="@type" value="@value" class="site-btn">
+}
+
+
+@*<div class="block">
+    <div class="col-lg-6">
+        <div class="block-body">
+            <h2>Update Service</h2>*@
+            
+                
+                    @using (Html.BeginForm(FormMethod.Post))
+                    {
+                        <div class="form-group">
+                            <div class="col-lg-6">
+                                @*<input type="text" placeholder="First Name">*@
+                                <label class="form-control-label">First Name:</label>
+                                @Html.HiddenFor(x=>x.FID)
+                                @Html.TextBoxFor(x => x.FirstName, null, new { @Class = "form-control", placeholder = "First Name" })
+                                @Html.ValidationMessageFor(x => x.FirstName, null, new { Style = "color:red;" })
+                            </div>
+                            <div class="col-lg-6">
+                                @*<input type="text" placeholder="Last Name">*@
+                                <label class="form-control-label">Last Name:</label>
+                                @Html.TextBoxFor(x => x.LastName, null, new { @Class = "form-control", placeholder = "Last Name" })
+                                @Html.ValidationMessageFor(x => x.LastName, null, new { Style = "color:red;" })
+                            </div>
+
+                            @*<input type="text" placeholder="Your email">*@
+                            <div class="col-lg-6">
+                                <label class="form-control-label">Email:</label>
+                                @Html.TextBoxFor(x => x.Email, null, new { @Class = "form-conrol", placeholder = "aashirnazmi@gmail.com" })
+                                @Html.ValidationMessageFor(x => x.Email, null, new { Style = "color:red;" })
+                            </div>
+                            <div class="col-lg-6">
+                                @*<input type="text" placeholder="Subject" />*@<label class="form-control-label">Contact:</label>
+                                @Html.TextBoxFor(x => x.Contact, null, new { @Class = "form-conrol", placeholder = "012345678" })
+                            </div>
+                        </div>
+                                <br />
+                                @*<div>
+                                        <label>Choose Service Type:</label>
+                                        <br />
+                                        @Html.RadioButtonFor(x => x.ServiceType, true, new { @Class = "" }) Electrician
+                                        <br />
+                                        <br />
+                                        @Html.RadioButtonFor(x => x.ServiceType, false, new { @Class = "" }) Sanitary
+                                        <br />
+                                        <br />
+                                        @Html.RadioButtonFor(x => x.ServiceType, false, new { @Class = "" }) Automobile
+                                        <br />
+                                        <br />
+                                        @Html.RadioButtonFor(x => x.ServiceType, false, new { @Class = "" }) House Cleansing
+                                        <br />
+                                        <br />
+                                        @Html.RadioButtonFor(x => x.ServiceType, false, new { @Class = "" }) Security
+                                        <br />
+                                    </div>*@
+
+
+                                @*<h3>Choose Service Type: </h3>
+                                    <input id="Electrical" type="radio" checked="" value="option1" name="optionsRadios">
+                                    <label for="Electrical">Electrical</label>
+                                    <input id="Sanitary" type="radio" checked="" value="option1" name="optionsRadios">
+                                    <label for="Sanitary">Sanitary</label>
+                                    <input id="Automobile" type="radio" checked="" value="option1" name="optionsRadios">
+                                    <label for="Automobile">Automobile</label>
+                                    <input id="HouseCleansing" type="radio" checked="" value="option1" name="optionsRadios">
+                                    <label for="HouseCleansing">House cleansing</label>
+                                    <input id="Security" type="radio" checked="" value="option1" name="optionsRadios">
+                                    <label for="Security">Security</label>*@
+
+                                <br />
+
+                                        <div class="col-sm-9">
+                                            <label>Choose Service Type: </label>
+                                            <div class="custom-control custom-checkbox">
+                                                @Html.CheckBoxFor(x => x.Electrical, new { @Class = "custom-input-control" })
+                                                <label class="" for="Electrical">Electrical</label>
+                                                @*<input id="option" type="checkbox" value="">
+                                                    <label for="option"></label>*@
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                @Html.CheckBoxFor(x => x.Sanitary, new { @Class = "custom-input-control" })
+                                                <label class="" for="Sanitary">Sanitary</label>
+                                                @*<input id="option" type="checkbox" value="">
+                                                    <label for="option"></label>*@
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                @Html.CheckBoxFor(x => x.Mechanical, new { @Class = "custom-input-control" })
+                                                <label class="" for="Mechanical">Mechanical</label>
+                                                @*<input id="option" type="checkbox" value="">
+                                                    <label for="option"></label>*@
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                @Html.CheckBoxFor(x => x.HouseCleansing, new { @Class = "custom-input-control" })
+                                                <label class="" for="HouseCleansing">HouseCleansing</label>
+                                                @*<input id="option" type="checkbox" value="">
+                                                    <label for="option"></label>*@
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                @Html.CheckBoxFor(x => x.Security, new { @Class = "custom-input-control" })
+                                                <label class="" for="Security">Security</label>
+                                                @*<input id="option" type="checkbox" value="">
+                                                    <label for="option"></label>*@
+                                            </div>
+
+                                        </div>
+
+                                            <div class="form-group row">
+
+                                                <div class="col-sm-9">
+                                                    <label class="col-sm-3 form-control-label">Choose Servce:</label>
+                                                    @Html.DropDownListFor(x => x.ChooseService, new List<SelectListItem>
+                           {
+                           new SelectListItem {Text="Electrician", Value="1" },
+                           new SelectListItem {Text="Plumber", Value="2" },
+                           new SelectListItem {Text="Mechanic", Value="3" },
+                           new SelectListItem {Text="Maid", Value="4" },
+                           new SelectListItem {Text="Guard", Value="5" } }, new { @Class = "form-control" })
+                                                </div>
+                                                @*<div class="input-group">
+                                                            <h3>Choose Service:</h3>
+                                                            <div class="input-group-prepend">
+                                                                <button data-toggle="dropdown" type="button" class="btn btn-outline-secondary dropdown-toggle"> <span class="caret"></span></button>
+                                                                <div class="dropdown-menu">
+                                                                    <a href="#" class="dropdown-item">Electrician</a><a href="#" class="dropdown-item">Plumber</a><a href="#" class="dropdown-item">Mechanic</a><a href="#" class="dropdown-item">Maid</a>
+                                                                    <a href="#" class="dropdown-item">Guard</a>
+
+                                                    </div>*@
+
+                                                <div class="col-lg-6">
+                                                    @Button("submit", "Update Service")
+
+                                                    @*<input type="submit" value="Add Service" class="site-btn">*@
+                                                </div>
+                                                
+                                            </div>}
+            @*</div></div></div>*@
+
+                    @if (TempData["Message"] != null)
+                    {
+                        <script type="text/javascript">
+        window.onload = function () {
+            alert("@TempData["Message"]");
+        }
+                        </script>
+                    }

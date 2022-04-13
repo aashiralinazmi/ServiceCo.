@@ -1,0 +1,86 @@
+﻿@model List<ServiceCo.Models.ServiceModel>
+
+@{
+    ViewBag.Title = "View Service";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+
+
+
+
+<div class="page-content">
+    <!-- Page Header-->
+    <div class="page-header no-margin-bottom">
+        <div class="container-fluid">
+            <h2 class="h5 no-margin-bottom">View Service</h2>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active">Tables</li>
+        </ul>
+    </div>
+    <section class="no-padding-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-offset-6">
+                    <div class="block margin-bottom-sm">
+                        @*<div class="title"><strong>Basic Table</strong></div>*@
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Email</th>
+                                        <th>Contact</th>
+                                        <th>Electrical</th>
+                                        <th>Sanitary</th>
+                                        <th>Mechanical</th>
+                                        <th>House Cleansing</th>
+                                        <th>Security</th>
+                                        <th>Service</th>
+                                        <th>Update</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                    <tr>
+                                        
+                                        <td>@item.FirstName</td>
+                                        <td>@item.LastName</td>
+                                        <td>@item.Email</td>
+                                        <td>@item.Contact</td>
+                                        <td>@item.Electrical</td>
+                                        <td>@item.Sanitary</td>
+                                        <td>@item.Mechanical</td>
+                                        <td>@item.HouseCleansing</td>
+                                        <td>@item.Security</td>
+                                        <td>@item.ChooseService</td>
+                                        <td><a href="@Url.Action("UpdateService","Service", new { FID = @item.FID })"><i class="fa fa-edit"></i></a></td>
+                                        <td><a href="@Url.Action("DeleteService","Service", new { FID = @item.FID })"><i class="fa fa-trash"></i></a></td>
+                                        <td></td>
+                                    </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+@if (TempData["Message"] != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@TempData["Message"]");
+        }
+    </script>
+}

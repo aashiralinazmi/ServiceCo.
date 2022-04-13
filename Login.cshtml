@@ -1,0 +1,98 @@
+﻿@model ServiceCo.Models.LoginModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ServiceCo Login</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="~/Content/vendor/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="~/Content/vendor/font-awesome/css/font-awesome.min.css">
+    <!-- Custom Font Icons CSS-->
+    <link rel="stylesheet" href="~/Content/css/font.css">
+    <!-- Google fonts - Muli-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,700">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="~/Content/css/style.default.css" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="~/Content/css/custom.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="~/Content/img/favicon.ico">
+    <!-- Tweaks for older IEs-->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+</head>
+<body>
+    <div class="login-page">
+        <div class="container d-flex align-items-center">
+            <div class="form-holder has-shadow">
+                <div class="row">
+                    <!-- Logo & Information Panel-->
+                    <div class="col-lg-6">
+                        <div class="info d-flex align-items-center">
+                            <div class="content">
+                                <div class="logo">
+                                    <h1>ServiceCo</h1>
+                                </div>
+                                <p>Login Here</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Form Panel    -->
+                    <div class="col-lg-6">
+                        <div class="form d-flex align-items-center">
+                            <div class="content">
+                                <form method="post">
+                                @using (Html.BeginForm(FormMethod.Post))
+                                {
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(x => x.UserName, null, new { @Class = "form-control form-control-user", id = "exampleInputEmail", placeholder = "EnterEmailAddress" })
+                                        @Html.ValidationMessageFor(x => x.UserName, null, new { Style = "color:red;" })
+                                        @*<input id="login-username" type="text" name="loginUsername" required data-msg="Please enter your username" class="input-material">
+                                        <label for="login-username" class="label-material">User Name</label>*@
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.PasswordFor(x => x.UserPassword, new { @Class = "form-control form-control-user", id = "exampleInputPassword", placeholder = "Password" })
+                                        @Html.ValidationMessageFor(x => x.UserPassword, null, new { Style = "color:red;" })
+                                        @*<input id="login-password" type="password" name="loginPassword" required data-msg="Please enter your password" class="input-material">
+                                        <label for="login-password" class="label-material">Password</label>*@
+                                    </div>
+                                    if (ViewBag.Message != null)
+                                    {
+                                        <label class="ErrorMessage">@ViewBag.Message</label>
+                                    }
+                                    <input type="submit" value="Login" class="btn btn-primary" />
+                                    @*<button type="submit" class="btn btn-primary">Login</button>*@
+                                }</form>
+                                <br /><a href="#" class="forgot-pass">Forgot Password?</a><br><small>Do not have an account? </small><a href="register.html" class="signup">Signup</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyrights text-center">
+            <p>Design by <a href="https://bootstrapious.com/p/bootstrap-4-dark-admin" class="external">Bootstrapious</a></p>
+            <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+        </div>
+    </div>
+    <!-- JavaScript files-->
+    <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Content/vendor/popper.js/umd/popper.min.js"> </script>
+    <script src="~/Content/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/vendor/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="~/Content/vendor/chart.js/Chart.min.js"></script>
+    <script src="~/Content/vendor/jquery-validation/jquery.validate.min.js"></script>
+    <script src="~/Content/js/front.js"></script>
+</body>
+</html>
